@@ -1,0 +1,57 @@
+package com.example.appbackend.application.api;
+
+import com.example.appbackend.application.domain.service.ScoreService;
+import com.example.appbackend.application.mapping.ScoreMapper;
+import com.example.appbackend.application.resource.CreateScoreResource;
+import com.example.appbackend.application.resource.ScoreResource;
+import com.example.appbackend.application.resource.UpdateScoreResource;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@CrossOrigin("*")
+@Validated
+@RestController
+@RequestMapping("/api/v1/drivers")
+public class ScoreController {
+    public final ScoreService scoreService;
+    private final ScoreMapper mapper;
+
+    public ScoreController(ScoreService scoreService, ScoreMapper mapper){
+        this.scoreService=scoreService;
+        this.mapper=mapper;
+    }
+    //GET Scope
+    @GetMapping("/{driverId}/scores/{scope}")
+    public List<ScoreResource> getDriverScores(@PathVariable Long driverId, @PathVariable Integer scope){
+        return null;
+    }
+    //GET ALL
+    @GetMapping
+    public List<ScoreResource> getAllAdmins(){
+        return mapper.modelList(scoreService.getAll());
+    }
+    //GET BY ID
+    @GetMapping("{driverId}/scores")
+    public List<ScoreResource> getScoreByDriverId(@PathVariable Long driverId){
+        return mapper.modelList(scoreService.getByDriverId(driverId));
+    }
+    //POST
+    @PostMapping
+    public ScoreResource createScore(@RequestBody CreateScoreResource resource){
+        return mapper.toResource(scoreService.create(mapper.toModel(resource)));
+    }
+    //UPDATE
+    @PutMapping("/{scoreId}")
+    public ScoreResource updateScore(@PathVariable Long scoreId, @RequestBody UpdateScoreResource resource) {
+        return mapper.toResource(scoreService.update(scoreId, mapper.toModel(resource)));
+    }
+
+    //DELETE
+    @DeleteMapping("{scoreId}")
+    public ResponseEntity<?> deleteScore(@PathVariable Long scoreId) {
+        return scoreService.delete(scoreId);
+    }
+}
