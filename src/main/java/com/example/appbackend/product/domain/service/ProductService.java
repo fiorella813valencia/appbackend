@@ -1,6 +1,6 @@
 package com.example.appbackend.product.domain.service;
 
-import com.example.appbackend.application.domain.model.Score;
+
 import com.example.appbackend.product.domain.model.Product;
 import org.springframework.http.ResponseEntity;
 

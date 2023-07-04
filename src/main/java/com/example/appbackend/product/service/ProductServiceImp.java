@@ -31,9 +31,16 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
+//    public Product getById(Long productId) {
+//        return productRepository.findById(productId).orElseThrow(()-> new ResourceNotFoundException(ENTITY,productId));
+//    }
     public Product getById(Long productId) {
-        return productRepository.findById(productId).orElseThrow(()-> new ResourceNotFoundException(ENTITY,productId));
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException(ENTITY, productId));
     }
+
+
+
 
     @Override
     public Product create(Product product) {

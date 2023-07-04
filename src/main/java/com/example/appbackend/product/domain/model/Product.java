@@ -26,10 +26,5 @@ public class Product {
     @NotNull
     private Integer monitoringLevel;
 
-    @Transient
-    private String monitoringLevelString;
 
-//    @Column(name="monitoring_level", nullable=false)
-//    @Enumerated(EnumType.STRING)
-//    private MonitoringLevel monitoringLevel;
 }

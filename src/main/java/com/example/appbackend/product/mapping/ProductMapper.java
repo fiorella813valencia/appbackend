@@ -44,4 +44,6 @@ public class ProductMapper implements Serializable {
     public Product toModel(UpdateProductResource resource){
         return mapper.map(resource,Product.class);
     }
+
+
 }

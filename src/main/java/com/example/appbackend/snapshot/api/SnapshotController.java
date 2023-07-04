@@ -35,11 +35,11 @@ public class SnapshotController {
         return mapper.modelList(snapshots);
         //return mapper.modelList(snapshotService.getAll());
     }
-    //GET BY ID OJO
-    @GetMapping("{snapshotId}")
-    public SnapshotResource getSnapshotById(@PathVariable Long snapshotId, @PathVariable String productId){
-        return mapper.toResource(snapshotService.getById(snapshotId));
-    }
+//    //GET BY ID OJO
+//    @GetMapping("{snapshotId}")
+//    public SnapshotResource getSnapshotById(@PathVariable Long snapshotId, @PathVariable String productId){
+//        return mapper.toResource(snapshotService.getById(snapshotId));
+//    }
     //POST
     @PostMapping
     public SnapshotResource createSnapshot(@RequestBody CreateSnapshotResource resource, @PathVariable String productId){
