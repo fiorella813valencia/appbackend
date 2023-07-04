@@ -6,6 +6,7 @@ import com.example.appbackend.application.mapping.ScoreMapper;
 import com.example.appbackend.application.resource.CreateScoreResource;
 import com.example.appbackend.application.resource.ScoreResource;
 import com.example.appbackend.application.resource.UpdateScoreResource;
+import com.example.appbackend.shared.exception.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,8 @@ public class ScoreController {
             value =scoreService.getMax(driverId);
         }else if(scope==1){
             value=scoreService.getAverage(driverId);
-        }
+        }else
+            throw new ResourceNotFoundException("Scope value not specified");
         return ResponseEntity.ok(value);
     }
     //GET ALL

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class ResourceValidationException extends RuntimeException{
 
     public ResourceValidationException(){
-
+        super();
     }
 
     public ResourceValidationException(String message){
