@@ -1,5 +1,6 @@
 package com.example.appbackend.application.service;
 
+import com.example.appbackend.application.domain.model.Scope;
 import com.example.appbackend.application.domain.model.Score;
 import com.example.appbackend.application.domain.persistence.ScoreRepository;
 import com.example.appbackend.application.domain.service.ScoreService;
@@ -55,4 +56,43 @@ public class ScoreServiceImp implements ScoreService {
                     return ResponseEntity.ok().build();
                 }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, scoreId));
     }
+
+    @Override
+    public Scope getMax(Long driverId) {
+        List<Score> scores=scoreRepository.findByDriverId(driverId);
+        if(scores.isEmpty())
+            throw new ResourceNotFoundException(ENTITY,driverId);
+
+        float max = 0;
+        for (Score score:scores){
+            if(max<score.getValue())
+                max=score.getValue();
+        }
+
+        Scope scope=new Scope();
+        scope.setValue(max);
+        scope.setDriverId(driverId);
+        return scope;
+    }
+
+    @Override
+    public Scope getAverage(Long driverId) {
+        List<Score> scores=scoreRepository.findByDriverId(driverId);
+        if(scores.isEmpty())
+            throw new ResourceNotFoundException(ENTITY,driverId);
+
+        float suma = 0;
+        for (Score score:scores){
+            suma=suma+score.getValue();
+        }
+        float average=0;
+        average=suma/scores.size();
+
+        Scope scope =new Scope();
+        scope.setValue(average);
+        scope.setDriverId(driverId);
+        return scope;
+    }
+
+
 }

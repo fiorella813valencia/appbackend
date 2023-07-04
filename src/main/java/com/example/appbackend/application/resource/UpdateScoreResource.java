@@ -14,6 +14,5 @@ public class UpdateScoreResource {
     private Long driverId;
     @NotNull
     private Float value;
-    @NotNull
-    private Date registeredAt;
+
 }

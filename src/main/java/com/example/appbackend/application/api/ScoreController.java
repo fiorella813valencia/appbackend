@@ -1,5 +1,6 @@
 package com.example.appbackend.application.api;
 
+import com.example.appbackend.application.domain.model.Scope;
 import com.example.appbackend.application.domain.service.ScoreService;
 import com.example.appbackend.application.mapping.ScoreMapper;
 import com.example.appbackend.application.resource.CreateScoreResource;
@@ -25,8 +26,14 @@ public class ScoreController {
     }
     //GET Scope
     @GetMapping("/{driverId}/scores/{scope}")
-    public List<ScoreResource> getDriverScores(@PathVariable Long driverId, @PathVariable Integer scope){
-        return null;
+    public ResponseEntity<Scope> getDriverScores(@PathVariable Long driverId, @PathVariable Integer scope){
+        Scope value=new Scope();
+        if(scope==0){
+            value =scoreService.getMax(driverId);
+        }else if(scope==1){
+            value=scoreService.getAverage(driverId);
+        }
+        return ResponseEntity.ok(value);
     }
     //GET ALL
     @GetMapping

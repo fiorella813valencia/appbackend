@@ -1,5 +1,6 @@
 package com.example.appbackend.application.domain.service;
 
+import com.example.appbackend.application.domain.model.Scope;
 import com.example.appbackend.application.domain.model.Score;
 import org.springframework.http.ResponseEntity;
 
@@ -12,5 +13,9 @@ public interface ScoreService {
     Score create(Score score);
     Score update(Long scoreId,Score request);
     ResponseEntity<?> delete(Long scoreId);
+
+
+    Scope getMax(Long driverId);
+    Scope getAverage(Long driverId);
 
 }
