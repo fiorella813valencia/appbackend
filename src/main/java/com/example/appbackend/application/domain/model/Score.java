@@ -1,7 +1,6 @@
 package com.example.appbackend.application.domain.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.Date;

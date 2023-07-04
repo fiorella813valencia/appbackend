@@ -93,6 +93,4 @@ public class ScoreServiceImp implements ScoreService {
         scope.setDriverId(driverId);
         return scope;
     }
-
-
 }
