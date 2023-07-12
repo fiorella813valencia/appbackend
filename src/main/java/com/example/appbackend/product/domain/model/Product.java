@@ -23,8 +23,10 @@ public class Product {
     private String model;
     @NotBlank
     private String serialNumber;
+//    @NotNull
+//    private Integer monitoringLevel;
     @NotNull
-    private Integer monitoringLevel;
+    private MonitoringLevel monitoringLevel;
 
 
 }

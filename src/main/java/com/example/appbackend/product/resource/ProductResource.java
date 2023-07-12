@@ -15,6 +15,6 @@ public class ProductResource {
     private String brand;
     private String model;
     private String serialNumber;
-    private Integer monitoringLevel;
+    private MonitoringLevel monitoringLevel;
 
 }

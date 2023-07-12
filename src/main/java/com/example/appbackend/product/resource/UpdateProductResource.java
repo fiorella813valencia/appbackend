@@ -19,7 +19,7 @@ public class UpdateProductResource {
     @NotBlank
     private String serialNumber;
     @NotNull
-    private Integer monitoringLevel;
+    private MonitoringLevel monitoringLevel;
 
 //    @Enumerated(EnumType.STRING)
 //    private MonitoringLevel monitoringLevel;

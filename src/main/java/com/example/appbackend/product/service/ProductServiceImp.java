@@ -52,12 +52,12 @@ public class ProductServiceImp implements ProductService {
         if(productWithSerialNumber!=null)
             throw new ResourceValidationException(ENTITY,"Product with the same serial number already exists");
 
-        if(!(product.getMonitoringLevel()==1||product.getMonitoringLevel()==2))
-            throw new ResourceValidationException(ENTITY,"Monitoring level must be 1 or 2");
+//        if(!(product.getMonitoringLevel()==1||product.getMonitoringLevel()==2))
+//            throw new ResourceValidationException(ENTITY,"Monitoring level must be 1 or 2");
 
-//        if (product.getMonitoringLevel() != MonitoringLevel.ESSENTIAL_MONITORING && product.getMonitoringLevel() != MonitoringLevel.ADVANCE_MONITORING) {
-//            throw new ResourceValidationException(ENTITY, "Monitoring level must be ESSENTIAL_MONITORING or ADVANCE_MONITORING");
-//        }
+        if (product.getMonitoringLevel() != MonitoringLevel.ESSENTIAL_MONITORING && product.getMonitoringLevel() != MonitoringLevel.ADVANCE_MONITORING) {
+            throw new ResourceValidationException(ENTITY, "Monitoring level must be ESSENTIAL_MONITORING or ADVANCE_MONITORING");
+        }
 
 
 
