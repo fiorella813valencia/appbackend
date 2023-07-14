@@ -40,9 +40,15 @@ public class SnapshotController {
 //    public SnapshotResource getSnapshotById(@PathVariable Long snapshotId, @PathVariable String productId){
 //        return mapper.toResource(snapshotService.getById(snapshotId));
 //    }
-    //POST
+
     @PostMapping
     public SnapshotResource createSnapshot(@RequestBody CreateSnapshotResource resource, @PathVariable String productId){
         return mapper.toResource(snapshotService.create(mapper.toModel(resource)));
     }
+
+    //POST
+//    @PostMapping
+//    public SnapshotResource createSnapshot(@RequestBody CreateSnapshotResource resource, @PathVariable Long productId){
+//        return mapper.toResource(snapshotService.create(mapper.toModel(resource),productId));
+//    }
 }
