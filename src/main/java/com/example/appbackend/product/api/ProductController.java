@@ -4,6 +4,7 @@ import com.example.appbackend.product.domain.service.ProductService;
 import com.example.appbackend.product.mapping.ProductMapper;
 import com.example.appbackend.product.resource.CreateProductResource;
 import com.example.appbackend.product.resource.ProductResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,5 +38,11 @@ public class ProductController {
     @PostMapping
     public ProductResource createProduct(@RequestBody CreateProductResource resource){
         return mapper.toResource(productService.create(mapper.toModel(resource)));
+    }
+
+    //DELETE
+    @DeleteMapping("{productId}")
+    public ResponseEntity<?> deleteProduct(@PathVariable Long productId) {
+        return productService.delete(productId);
     }
 }
