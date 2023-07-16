@@ -1,7 +1,6 @@
 package com.example.appbackend.snapshot.service;
 
 import com.example.appbackend.product.domain.model.Product;
-import com.example.appbackend.product.domain.model.enums.MonitoringLevel;
 import com.example.appbackend.product.domain.persistence.ProductRepository;
 import com.example.appbackend.product.domain.service.ProductService;
 import com.example.appbackend.shared.exception.ResourceNotFoundException;
@@ -15,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -40,8 +38,8 @@ public class SnapshotServiceImp implements SnapshotService {
     }
 
     @Override
-    public Snapshot getById(Long snapshotId) {
-        return snapshotRepository.findById(snapshotId).orElseThrow(()->new ResourceNotFoundException(ENTITY,snapshotId));
+    public Snapshot getById(Long id) {
+        return snapshotRepository.findById(id).orElseThrow(()->new ResourceNotFoundException(ENTITY,id));
     }
 
     @Override
@@ -88,17 +86,17 @@ public class SnapshotServiceImp implements SnapshotService {
 //    }
 
     @Override
-    public Snapshot update(Long snapshotId, Snapshot request) {
+    public Snapshot update(Long id, Snapshot request) {
         return snapshotRepository.save(request);
     }
 
     @Override
-    public ResponseEntity<?> delete(Long snapshotId) {
-        return snapshotRepository.findById(snapshotId).map(
+    public ResponseEntity<?> delete(Long id) {
+        return snapshotRepository.findById(id).map(
                 snapshot -> {
                     snapshotRepository.delete(snapshot);
                     return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, snapshotId));
+                }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, id));
     }
 
     @Override

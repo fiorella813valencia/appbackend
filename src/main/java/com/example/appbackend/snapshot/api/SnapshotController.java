@@ -42,7 +42,7 @@ public class SnapshotController {
 //    }
 
     @PostMapping
-    public SnapshotResource createSnapshot(@RequestBody CreateSnapshotResource resource, @PathVariable String productId){
+    public SnapshotResource createSnapshot(@RequestBody CreateSnapshotResource resource, @PathVariable Long productId){
         return mapper.toResource(snapshotService.create(mapper.toModel(resource)));
     }
 

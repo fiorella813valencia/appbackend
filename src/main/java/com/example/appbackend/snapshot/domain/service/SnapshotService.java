@@ -9,11 +9,11 @@ import java.util.List;
 public interface SnapshotService {
 
     List<Snapshot> getAll();
-    Snapshot getById(Long snapshotId);
+    Snapshot getById(Long Id);
 //    Snapshot create(Snapshot snapshot,Long productId);
     Snapshot create(Snapshot snapshot);
     Snapshot update(Long snapshotId,Snapshot request);
-    ResponseEntity<?> delete(Long snapshotId);
+    ResponseEntity<?> delete(Long Id);
 
     List<Snapshot> getSnapshotsByProductId(Long productId);
 }
