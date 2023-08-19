@@ -1,8 +1,6 @@
 package com.example.appbackend.product.resource;
 
 import com.example.appbackend.product.domain.model.enums.MonitoringLevel;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Transient;
 import lombok.*;
 
 @Getter
